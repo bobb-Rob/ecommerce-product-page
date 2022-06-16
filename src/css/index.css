@@ -15,4 +15,48 @@
     --grayishBlue: hsl(220, 14%, 75%);
     --lightGrayishBlue: hsl(223, 64%, 98%);
     --white: hsl(0, 0%, 100%);
+    --blackFaded: hsla(0, 0%, 0%, 0.253);
+    --black: hsl(0, 0%, 0%);
+    --kumbhSans: 'Kumbh Sans', sans-serif;
 }
+
+body {
+    font-family: var(--kumbhSans);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    height: 3rem;
+}
+
+.navbar div {
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    font-family: var(--kumbhSans);
+}
+
+.navbar svg {
+    margin-right: 1rem;   
+}
+
+.cart-div > img {
+    width: 20px;
+}
+
+.img-courosal {
+    width: 100%;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+
