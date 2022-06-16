@@ -1,0 +1,24 @@
+.headline,.cart-section {
+  padding: 1rem 1.2rem 0;
+}
+
+.headline > span {
+  color: var(--orange);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 2px;
+}
+
+.headline > h2 {
+  margin: 0.5rem 0;
+  font-weight: bold;
+  color: var(--black);
+}
+
+.headline > p {
+  line-height: 1.4rem;
+  font-size: 0.9rem;
+  color: var(--veryVarkBlue);
+}

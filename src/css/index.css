@@ -19,6 +19,7 @@
     --blackFaded: hsla(0, 0%, 0%, 0.253);
     --black: hsl(0, 0%, 0%);
     --kumbhSans: 'Kumbh Sans', sans-serif;
+    --fontSize: 1rem;
 }
 
 body {
@@ -58,6 +59,7 @@ body {
 .attribution {
     font-size: 11px;
     text-align: center;
+    display: none;
 }
 
 .attribution a {
