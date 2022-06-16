@@ -30,11 +30,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    height: 3rem;
-}
-
-.menu-conatiner {
-    display: none;
+    height: 3rem;  
 }
 
 .navbar div {
