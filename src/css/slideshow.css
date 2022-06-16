@@ -1,0 +1,51 @@
+.slideshow-container { 
+  position: relative;
+  height: 340px; 
+  overflow: hidden;
+}
+
+.circle {
+  border-radius: 50%;
+  position: absolute;
+  top: 47%;
+  background-color: var(--white);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.6s ease;
+}
+
+.prev,.next {
+  cursor: pointer;
+  font-weight: bold;
+  user-select: none;
+}
+
+.circle-prev {
+  left: 10px;
+}
+
+.circle-next {
+  right: 10px;
+}
+
+.circle-prev:hover {
+  background-color: var(--whiteFaded);
+}
+
+.circle-next:hover {
+  background-color: var(--whiteFaded);
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}

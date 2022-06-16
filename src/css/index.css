@@ -15,6 +15,7 @@
     --grayishBlue: hsl(220, 14%, 75%);
     --lightGrayishBlue: hsl(223, 64%, 98%);
     --white: hsl(0, 0%, 100%);
+    --whiteFaded: hsla(0, 0%, 100%, 0.59);
     --blackFaded: hsla(0, 0%, 0%, 0.253);
     --black: hsl(0, 0%, 0%);
     --kumbhSans: 'Kumbh Sans', sans-serif;
@@ -29,6 +30,10 @@ body {
     justify-content: space-between;
     padding: 1rem;
     height: 3rem;
+}
+
+.menu-conatiner {
+    display: none;
 }
 
 .navbar div {

@@ -1,4 +1,5 @@
 import './css/index.css';
+import './css/slideshow.css';
 import avatarImg from './images/image-avatar.png';
 import courosalImg from './images/image-product-1.jpg'
 
