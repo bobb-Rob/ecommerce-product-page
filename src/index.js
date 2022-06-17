@@ -1,4 +1,4 @@
-import { insertCloseIcon } from './components/menu';
+import { insertCloseIcon } from './components/dom.js';
 import './css/index.css';
 import './css/slideshow.css';
 import './css/headline.css';
@@ -19,18 +19,26 @@ imgCourosal.src = courosalImg;
 plusIconEl.src = plusIcon;
 minusIconEl.src = minusIcon;
 
-const menuEl = document.querySelector('.menu-container');
-const closeEl = insertCloseIcon(menuEl);
-closeEl.classList.add('close');
+// Menu onclick
+
 
 const hamburger = document.querySelector('.hamburger');
 
 hamburger.addEventListener('click', () => {
+    const menuEl = document.querySelector('.menu-container');
+    const closeEl = insertCloseIcon(menuEl);
+    closeEl.classList.add('close');
+
     document.querySelector(".menu-container").style.width = "85%";
     document.querySelector(".menu-container").style.padding = "3rem 2rem";
-    
+
     document.querySelector('.close').addEventListener('click', () => {
         document.querySelector(".menu-container").style.width = "";
-    document.querySelector(".menu-container").style.padding = "";
+        document.querySelector(".menu-container").style.padding = "";
+        closeEl.remove();
     })
-})
+});
+
+const cart = [];
+
+const innerCartBox = document.querySelector('.inner-cart-box');
