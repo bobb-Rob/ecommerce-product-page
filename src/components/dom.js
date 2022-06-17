@@ -1,5 +1,4 @@
 import uniqid from 'uniqid';
-import Cart from './cart';
 import '../css/sidebar.css';
 import closeIcon from '../images/icon-close.svg';
 import image1Thumnail from '../images/image-product-1-thumbnail.jpg'
@@ -49,8 +48,7 @@ const product =  {
 }
 
 const insertCartCard = ({images, productName, qty, price, id}) => {
-    const productThumnail = images.image1.imageThumnail;
-    console.log(productThumnail)
+    const productThumnail = images.image1.imageThumnail;  
     
     const cartCard = `
     <div class="cart-card" id="${id}">
