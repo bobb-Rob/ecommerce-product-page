@@ -24,6 +24,7 @@ minusIconEl.src = minusIcon;
 const displayCard = () => {    
     const innerCartBox = document.querySelector('.inner-cart-box');
     const emptyEl = document.createElement('p');
+    emptyEl.className = 'empty-message'
     emptyEl.textContent = 'Your cart is empty.'
     if(Cart.cart.length === 0){
         innerCartBox.appendChild(emptyEl)
@@ -66,13 +67,13 @@ hamburger.addEventListener('click', () => {
 });
 
 // Checkout cart click event
-const displayCheckout = () => {    
+const displayCheckout = (e) => {    
     const checkoutFn = () => {
         const bgCartBox = document.querySelector('.bg-cart-box');
         bgCartBox.classList.remove('checkout-cart-active');
         bgCartBox.removeEventListener('click', checkoutFn);
     }
-
+    e.stopPropagation()
     const bgCartBox = document.querySelector('.bg-cart-box');
     bgCartBox.classList.add('checkout-cart-active');
     bgCartBox.addEventListener('click', checkoutFn);
@@ -102,6 +103,15 @@ const countDecrement = () => {
     }
 } 
 
+const resetUICount = () => {
+    const cartQtyCount = document.querySelector('.cartQtyCount');
+    const cartCount = document.querySelector('.cart-count');
+    
+    cartQtyCount.textContent = 0;
+    cartCount.textContent = 0;       
+   
+} 
+
 const alreadyInCart = (msg) => {
     const addToCartBtn = document.querySelector('.add-to-cart-btn');
     addToCartBtn.lastElementChild.textContent = msg;
@@ -114,6 +124,7 @@ addToCartBtn.addEventListener('click', () => {
         incrementQty(product)
         resetCheckoutItems();
         alreadyInCart('Already in cart');
+        // attachDeleteEvent();
     }else {
         alreadyInCart('Already in cart');
     }    
@@ -141,11 +152,13 @@ plusIconEl.addEventListener('click', () => {
         countIncrement();
         incrementQty(product);
         resetCheckoutItems();
+        // attachDeleteEvent();
     }else {
         alreadyInCart('Already in cart')
         countIncrement();
         incrementQty(product);    
         resetCheckoutItems();
+        // attachDeleteEvent();
     }    
 });
 
@@ -162,7 +175,24 @@ minusIconEl.addEventListener('click', () => {
     }
 })
 
+// remove product from the cart
+const attachDeleteEvent = () => {
+    const deleteProductIcon = Array.from(document.querySelectorAll('.product-delete'));
+    console.log(deleteProductIcon)
+    if(deleteProductIcon.length) {
+        console.log('here');
+        deleteProductIcon.forEach((item) => {
+        item.addEventListener('click', () => {
+                Cart.removeProduct(product);
+                console.log(Cart.cart)
+                resetCheckoutItems();
+                alreadyInCart('Add to cart')
+                resetUICount();
+            })
+        })       
+    }else {
+        console.log('no delete btn')
+    } 
+}
 
-
-
-const deleteProductIcon = document.querySelector('.product-delete'); 
+// attachDeleteEvent();
