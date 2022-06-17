@@ -75,6 +75,9 @@
     z-index: 2;
     display: flex;
     justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
 }
 
 .cart-box {
@@ -117,4 +120,9 @@
 
 .product-thumbnail + div {
    margin-left: 10px;
+}
+
+.checkout-cart-active {
+    visibility: visible;
+    opacity: 1;
 }

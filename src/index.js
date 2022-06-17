@@ -20,8 +20,6 @@ plusIconEl.src = plusIcon;
 minusIconEl.src = minusIcon;
 
 // Menu onclick
-
-
 const hamburger = document.querySelector('.hamburger');
 
 hamburger.addEventListener('click', () => {
@@ -39,6 +37,13 @@ hamburger.addEventListener('click', () => {
     })
 });
 
-const cart = [];
-
-const innerCartBox = document.querySelector('.inner-cart-box');
+// Checkout cart click event
+const checkoutCart = document.querySelector('.checkout-cart');
+checkoutCart.addEventListener('click', () => {
+    const bgCartBox = document.querySelector('.bg-cart-box');
+    bgCartBox.classList.add('checkout-cart-active');
+    bgCartBox.addEventListener('click', () => {
+        bgCartBox.classList.remove('checkout-cart-active');
+        bgCartBox.removeEventListener();
+    })
+});

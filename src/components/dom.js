@@ -37,11 +37,13 @@ const insertCartCard = ({productThumnail, productName, qty, price}) => {
         <div>
             <span class="product-name">${productName}</span>
             <div>
-            <span class="product-amount">${price}</span>
-            <span class="product-qty">${qty}</span>
-            <span class="product-total">
-                <strong>$375</strong>
-            </span>
+                <span class="product-amount">$${price}</span>
+                <span>x</span>
+                <span class="product-qty">${qty}</span>
+                <span>=</span>
+                <span class="product-total">
+                    <strong>$375.00</strong>
+                </span>
             </div>
         </div>
       </div>
