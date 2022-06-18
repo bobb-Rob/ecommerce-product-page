@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* colors */
+:root {
+    --mobile: 375px;
+    --desktop: 1440px;
+    --orange: hsl(26, 100%, 55%);
+    --paleOrange: hsl(25, 100%, 94%);
+    --veryVarkBlue: hsl(220, 13%, 13%);
+    --darkGrayishBlue: hsl(219, 9%, 45%);
+    --grayishBlue: hsl(220, 14%, 75%);
+    --lightGrayishBlue: hsl(223, 64%, 98%);
+    --white: hsl(0, 0%, 100%);
+    --whiteFaded: hsla(0, 0%, 100%, 0.59);
+    --blackFaded: hsla(0, 0%, 0%, 0.253);
+    --black: hsl(0, 0%, 0%);
+    --kumbhSans: 'Kumbh Sans', sans-serif;
+    --fontSize: 1rem;
+}
+
+body {
+    font-family: var(--kumbhSans);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    height: 3rem;  
+}
+
+.navbar div {
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    font-family: var(--kumbhSans);
+}
+
+.navbar svg {
+    margin-right: 1rem;   
+}
+
+.cart-div > img {
+    width: 20px;
+}
+
+.img-courosal {
+    width: 100%;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    display: none;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+

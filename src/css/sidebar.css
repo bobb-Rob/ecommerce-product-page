@@ -1,0 +1,32 @@
+.menu-container {
+    position: fixed;
+    list-style: none;
+    /* padding: 3rem 2rem; */
+    width: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: var(--white);
+    z-index: 5;
+    overflow-x: hidden;   
+    transition: 0.5s;
+}
+
+.menu-container li {
+    margin-top: 1rem;
+}
+
+.menu-container a {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: bold;
+}
+
+.menu-container a:hover {
+    color: var(--veryVarkBlue);
+  }
+
+.close {
+    position: absolute;
+    top: 20px;
+}
