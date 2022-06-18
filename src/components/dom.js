@@ -79,65 +79,107 @@ const insertCartCard = ({images, productName, qty, price, id}) => {
 };
 
 
+  // Slideshow
+  const desktopSlideshow = (() => {
+    const imagesArr = [productImage1, productImage2, productImage3, productImage4 ];
+    const thumbnailsArr = [image4Thumnail, image3Thumnail, image2Thumnail, image1Thumnail ];
 
-
-const executeSlideShow = () => {  
-  const slideCard = (image) => {
-    const slides = 
-    `<div class="myslide fade">
-      <img class="img-courosal" src="${image}" alt="img-courosal">
-    </div>`
-    const slideshowContainer = document.querySelector('.slideshow-container');
-    slideshowContainer.insertAdjacentHTML('afterbegin', slides)
-  }
-
-  const showSlider = (n) => {
-    let i;
-    let slides = document.getElementsByClassName("myslide");
-    if (n > slides.length) {
-      slideIndex = 1
+    const slideCard = (image) => {
+      const slides = 
+      `<div class="myslide fade">
+        <img class="img-courosal" src="${image}" alt="img-courosal">
+      </div>`
+      const slideshowContainer = document.querySelector('.slideshow-container');
+      slideshowContainer.insertAdjacentHTML('afterbegin', slides)
     }
-
-    if (n < 1) {
-      slideIndex = slides.length
-    
-    }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-
-    slides[slideIndex-1].style.display = "block";
-    }
-
-
-  const imagesArr = [productImage1, productImage2, productImage3, productImage4 ];
-  imagesArr.forEach((item) => {
-    slideCard(item)
-  });
-
-  let slideIndex = 1;
-  showSlider(slideIndex);
-
-  const plusSlides = (n) => {
-    console.log('clicked')
-    showSlider(slideIndex += n);
-  }
+         
+    imagesArr.forEach((item) => {
+      slideCard(item);
+    });
   
- 
+    const showSlider = (n) => {
+      let i;
+      let slides = document.getElementsByClassName("myslide");
+      if (n > slides.length) {
+        slideIndex = 1
+      }
+  
+      if (n < 1) {
+        slideIndex = slides.length;      
+      }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+  
+      slides[slideIndex-1].style.display = "block";
+    }     
+  
+    let slideIndex = 1;
+    showSlider(slideIndex);
+  
+    const plusSlides = (n) => {
+      console.log('clicked')
+      showSlider(slideIndex += n);
+    }
     
-  const prev = document.querySelector('.circle-prev');
-  const next = document.querySelector('.circle-next');
+    function currentSlide(n) {
+      showSlider(slideIndex = n);
+    }
+      
+    const prev = document.querySelector('.circle-prev');
+    const next = document.querySelector('.circle-next');
+  
+    prev.addEventListener('click', () => {
+      plusSlides(-1)
+    });
+  
+    next.addEventListener('click', () => {
+      plusSlides(1)
+    });
+  
 
-  prev.addEventListener('click', () => {
-    plusSlides(-1)
-  });
+    const slidesEl = (image, id) => {
+      const slides = document.createElement('div');
+      slides.classList.add('myThumbnails');    
+      slides.innerHTML = `<img src="${image}" id="${id}" alt='product-thumbnail' >`;
+      return slides;
+    }
 
-  next.addEventListener('click', () => {
-    plusSlides(1)
-  });
+    const thumbnailContainer = document.querySelector('.thumbnail-container');
+    thumbnailsArr.forEach((item, index) => {
+      thumbnailContainer.appendChild(slidesEl(item, index + 1))
+    });
 
-  }
+    thumbnailContainer.addEventListener('click', (e) => {
+      console.log(e.target)
+        if(e.target.id === '1'){
+          currentSlide(1);
+        }
+        if(e.target.id === '2'){
+          currentSlide(2);
+        }
+        if(e.target.id === '3'){
+          currentSlide(3);
+        }
+        if(e.target.id === '4'){
+          currentSlide(4);
+        }       
+      });
 
-  executeSlideShow();
+      const slideshowContainer = document.querySelector('.slideshow-container');
+      slideshowContainer.addEventListener('click', (e) => {
+        if(e.target.classList.contains('img-courosal')){
+          console.log('pop the modal')
+        }
+      })
+
+
+
+
+
+    return { }
+  })();
+
+
 
 export { insertCloseIcon, insertCartCard, product }

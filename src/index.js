@@ -12,14 +12,12 @@ import Cart from './components/cart.js';
 
 
 const avatar = document.querySelector('.avatar');
-const imgCourosal = document.querySelector('.img-courosal');
 const plusIconEl = document.querySelector('.plus-icon');
 const minusIconEl = document.querySelector('.minus-icon');
 const logoEl = document.querySelector('.logo');
 
 logoEl.src = logo;
 avatar.src = avatarImg;
-imgCourosal.src = courosalImg;
 plusIconEl.src = plusIcon;
 minusIconEl.src = minusIcon;
 
