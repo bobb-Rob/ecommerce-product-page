@@ -78,4 +78,66 @@ const insertCartCard = ({images, productName, qty, price, id}) => {
   innerCartBox.insertAdjacentHTML('beforeend', cartCard)
 };
 
+
+
+
+const executeSlideShow = () => {  
+  const slideCard = (image) => {
+    const slides = 
+    `<div class="myslide fade">
+      <img class="img-courosal" src="${image}" alt="img-courosal">
+    </div>`
+    const slideshowContainer = document.querySelector('.slideshow-container');
+    slideshowContainer.insertAdjacentHTML('afterbegin', slides)
+  }
+
+  const showSlider = (n) => {
+    let i;
+    let slides = document.getElementsByClassName("myslide");
+    if (n > slides.length) {
+      slideIndex = 1
+    }
+
+    if (n < 1) {
+      slideIndex = slides.length
+    
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    slides[slideIndex-1].style.display = "block";
+    }
+
+
+  const imagesArr = [productImage1, productImage2, productImage3, productImage4 ];
+  imagesArr.forEach((item) => {
+    slideCard(item)
+  });
+
+  let slideIndex = 1;
+  showSlider(slideIndex);
+
+  const plusSlides = (n) => {
+    console.log('clicked')
+    showSlider(slideIndex += n);
+  }
+  
+ 
+    
+  const prev = document.querySelector('.circle-prev');
+  const next = document.querySelector('.circle-next');
+
+  prev.addEventListener('click', () => {
+    plusSlides(-1)
+  });
+
+  next.addEventListener('click', () => {
+    plusSlides(1)
+  });
+
+  }
+
+  executeSlideShow();
+
 export { insertCloseIcon, insertCartCard, product }

@@ -4,6 +4,10 @@
   overflow: hidden;
 }
 
+.myslide {
+  display: none;
+}
+
 .circle {
   border-radius: 50%;
   position: absolute;

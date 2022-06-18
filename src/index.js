@@ -237,4 +237,6 @@ const attachDeleteEvent = () => {
     } 
 }
 
-// attachDeleteEvent();
+// SLide show event
+
+
