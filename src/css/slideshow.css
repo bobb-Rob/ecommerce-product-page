@@ -53,3 +53,10 @@
   from {opacity: .4}
   to {opacity: 1}
 }
+
+@media screen and (min-width: 375px) {
+  .slideshow-container {
+    grid-row: 2 / 3;
+    margin-bottom: 10rem;
+  }
+}

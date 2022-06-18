@@ -65,16 +65,35 @@ body {
 
 @media screen and (min-width: 375px) {
     body {
-        padding: 0 13%;       
+        padding: 0 13% ;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* grid-template-rows: 9rem repeat(2, 1fr); */
+        column-gap: 5rem;
+        border: 1px solid rgb(78, 28, 6);
+        min-height: 100vh; 
     }
 
     .navbar {      
-        height: 4.4rem !important;  
+        min-height: 6rem !important;
+        grid-column: span 2;
+        padding: 0;
+        border-bottom: 1px solid var(--grayishBlue);
+        margin-bottom: 5rem;
+    }  
+    
+    .headline {
+        margin-top: 1rem;
     }
 
-    .header {
-        display: flex;
-        align-items: center;       
+    .headline > p {
+        margin-top: 1.5rem;       
+     }
+        
+    .cart-div > img {
+        width: 40px;
     }
-    
+
+
+     
 }

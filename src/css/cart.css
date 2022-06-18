@@ -154,3 +154,47 @@
   font-weight: bold;
   color: var(--darkGrayishBlue);
 }
+
+
+@media screen and (min-width: 375px) {
+    .price-section {
+        display: block;
+        grid-column: span 2;       
+    }
+
+    .cart-section {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        height: 100px;
+    }
+
+    .add-item-section {
+        display: flex;
+        align-items: center;
+    }
+
+    .cart-btn-wrapper {
+        margin: 30px 0;
+    }
+
+    .minus-icon {       
+        padding-bottom: 4px;
+    }
+
+    
+.cart-count {
+    position: absolute;
+    background-color: var(--orange);
+    color: var(--white);
+    font-family: sans-serif;
+    font-size: 12px;
+    border-radius: 50%;
+    width: 20px;
+    height: 15px;
+    text-align: center;
+    top: 0px;
+    right: 45px;
+  }
+    
+    
+}

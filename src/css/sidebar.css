@@ -1,4 +1,4 @@
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 651px) {
     .menu-container {
         position: fixed;
         list-style: none;   
@@ -37,16 +37,14 @@
 }
 
 
-@media screen and (min-width: 375px) { 
+@media screen and (min-width: 650px) { 
     
     .hamburger {
         display: none;
     }
 
     .menu-container {
-        display: flex;     
-        width: 400px;
-        justify-content: space-evenly;
+        display: flex; 
         margin: 0 1.5rem;
         padding-top: 0.4rem;     
     }
@@ -55,6 +53,7 @@
         display: flex;
         align-items: center;
         font-size: 0.85rem;
+        padding-right: 20px;
     }    
 
     .menu-container a {      
