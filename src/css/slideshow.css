@@ -5,7 +5,7 @@
 }
 
 .myslide {
-  display: none;
+  display: none;  
 }
 
 .circle {
@@ -59,15 +59,21 @@
 }
 
 @media screen and (min-width: 375px) {
+  .image-slide-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .slideshow-container {
-    grid-row: 2 / 3;
-    margin-bottom: 1rem;
-    height: 450px; 
+    grid-row: 2 / 3;    
+    margin-bottom: 1rem;   
     border-radius: 15px;
+    width: 80%;
   }
 
  .thumbnail-container {  
-  width: 100%;
+  width: 80%;
   height: 100px;  
   margin-bottom: 10rem;
   display: flex;
@@ -77,6 +83,7 @@
  .myThumbnails {  
   border-radius: 10px;
   overflow: hidden;
+  background-color: var(--white);
  }
 
  .myThumbnails:hover {  
@@ -89,6 +96,50 @@
 
  .circle {
   display: none;
+ }
+
+.slide-pop-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.876);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s;
+}
+
+.inner-slide {
+  width: 30%; 
+  overflow: hidden;
+  border-radius: 10px;
+  height: 390px;
+}
+
+
+.inner-slide img {
+  width: 100%;
+}
+
+.pop-thumbnail {  
+  width: 30%; 
+  height: 80px;
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+ }
+
+ .pop-close {
+  position: absolute;
+  top: 5px;
+  left: 63.5%;
+  width: 20px;
  }
   
 }

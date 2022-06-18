@@ -150,6 +150,7 @@ const insertCartCard = ({images, productName, qty, price, id}) => {
       thumbnailContainer.appendChild(slidesEl(item, index + 1))
     });
 
+    // Thumbnail image events
     thumbnailContainer.addEventListener('click', (e) => {
       console.log(e.target)
         if(e.target.id === '1'){
@@ -166,10 +167,42 @@ const insertCartCard = ({images, productName, qty, price, id}) => {
         }       
       });
 
+      const displayPop = (image) => {       
+        const popupModal = `
+          <div class="slide-pop-bg">
+            <div class="inner-slide">
+              <img src='${image}' alt='product-image'>
+            </div>
+            <div class="pop-thumbnail">
+      
+            </div>
+        </div>`;
+        const slideshowContainer = document.querySelector('.slideshow-container');
+        slideshowContainer.insertAdjacentHTML('beforebegin', popupModal);
+      }
+
+
+      const insertPopThumnail = () => {
+        const popThumbnail = document.querySelector('.pop-thumbnail');
+        thumbnailsArr.forEach((item, index) => {
+          popThumbnail.appendChild(slidesEl(item, index + 10))
+        })
+        
+      }
+
+
       const slideshowContainer = document.querySelector('.slideshow-container');
-      slideshowContainer.addEventListener('click', (e) => {
-        if(e.target.classList.contains('img-courosal')){
-          console.log('pop the modal')
+      slideshowContainer.addEventListener('click', (e) => {       
+        if(e.target.classList.contains('img-courosal') && screen.width > 375){
+          console.log('pop the modal');
+
+          displayPop(imagesArr[0]);
+         
+          insertPopThumnail()
+          const slidePopBg = document.querySelector('.slide-pop-bg');
+          const closeEll = insertCloseIcon(slidePopBg);
+          closeEll.classList.add('pop-close');
+          slidePopBg.classList.add('checkout-cart-active');   
         }
       })
 
