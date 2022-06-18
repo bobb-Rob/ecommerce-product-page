@@ -57,7 +57,7 @@ const updateProductCount = (cart, product) => {
             count = item.qty;
         }      
     });
-    productQtyCount.textContent = 0;    
+    productQtyCount.textContent = count;    
 }
 
 const resetCheckoutItems = () => {
@@ -228,8 +228,8 @@ const attachDeleteEvent = () => {
                 alreadyInCart('Add to cart');
                 attachDeleteEvent();
                 const productQtyCount = document.querySelector('.productQtyCount');   
-                productQtyCount.textContent = 0;    
-               
+                productQtyCount.textContent = 0; 
+                updateCartCounts(Cart.cart);
             })
         })       
     }else {

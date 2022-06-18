@@ -3,31 +3,31 @@ import uniqid from 'uniqid'
 
 class Cart {
     static cart = [
-         {
-        images: {
-          image1: {
-            image: '',
-            imageThumnail: ''
-          },
-          image2: {
-            image: '',
-            imageThumnail: ''
-          },
-          image3: {
-            image: '',
-            imageThumnail: ''
-          },
-          image4: {
-            image: '',
-            imageThumnail: ''
-          },
+    //      {
+    //     images: {
+    //       image1: {
+    //         image: '',
+    //         imageThumnail: ''
+    //       },
+    //       image2: {
+    //         image: '',
+    //         imageThumnail: ''
+    //       },
+    //       image3: {
+    //         image: '',
+    //         imageThumnail: ''
+    //       },
+    //       image4: {
+    //         image: '',
+    //         imageThumnail: ''
+    //       },
     
-        },   
-        productName: 'Capri Limited Edition...',
-        qty: 4,
-        price: 125,
-        id: uniqid(),
-    }
+    //     },   
+    //     productName: 'Capri Limited Edition...',
+    //     qty: 4,
+    //     price: 125,
+    //     id: uniqid(),
+    // }
 ];
 
     static updateQty = (product) => {
