@@ -29,6 +29,7 @@
     "webpack-dev-server": "^4.9.2"
   },
   "dependencies": {
+    "gh-pages": "^4.0.0",
     "uniqid": "^5.4.0"
   }
 }
