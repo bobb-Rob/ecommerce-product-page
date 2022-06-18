@@ -7,6 +7,7 @@ import avatarImg from './images/image-avatar.png';
 import courosalImg from './images/image-product-1.jpg';
 import plusIcon from './images/icon-plus.svg';
 import minusIcon from './images/icon-minus.svg';
+import logo from './images/logo.svg'
 import Cart from './components/cart.js';
 
 
@@ -14,7 +15,9 @@ const avatar = document.querySelector('.avatar');
 const imgCourosal = document.querySelector('.img-courosal');
 const plusIconEl = document.querySelector('.plus-icon');
 const minusIconEl = document.querySelector('.minus-icon');
+const logoEl = document.querySelector('.logo');
 
+logoEl.src = logo;
 avatar.src = avatarImg;
 imgCourosal.src = courosalImg;
 plusIconEl.src = plusIcon;
