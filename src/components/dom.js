@@ -1,21 +1,20 @@
-import uniqid from 'uniqid';
 import '../css/sidebar.css';
 import closeIcon from '../images/icon-close.svg';
-import deleteIcon from '../images/icon-delete.svg'
-
-
+import deleteIcon from '../images/icon-delete.svg';
 
 const insertCloseIcon = (location) => {
-    const img = document.createElement('img');
-    img.src = closeIcon;   
-    location.appendChild(img);
-    return img;
-}
+  const img = document.createElement('img');
+  img.src = closeIcon;
+  location.appendChild(img);
+  return img;
+};
 
-const insertCartCard = ({images, productName, qty, price, id}) => {
-    const productThumnail = images.image1.imageThumnail;  
-    
-    const cartCard = `
+const insertCartCard = ({
+  images, productName, qty, price, id,
+}) => {
+  const productThumnail = images.image1.imageThumnail;
+
+  const cartCard = `
     <div class="cart-card" id="${id}">
     <div class="card-detail">
      <div>
@@ -37,58 +36,52 @@ const insertCartCard = ({images, productName, qty, price, id}) => {
         <img class="product-delete" src="${deleteIcon}" alt="delete-icon">
       </div>
       </div>         
-  </div>`
+  </div>`;
 
   const innerCartBox = document.querySelector('.inner-cart-box');
-  innerCartBox.insertAdjacentHTML('beforeend', cartCard)
+  innerCartBox.insertAdjacentHTML('beforeend', cartCard);
 };
 
-
 const slideCard = (image, location, classNam) => {
-  const slides = 
-  `<div class="${classNam} fade">
+  const slides = `<div class="${classNam} fade">
     <img class="img-courosal" src="${image}" alt="img-courosal">
-  </div>`     
-  location.insertAdjacentHTML('afterbegin', slides)
-}
+  </div>`;
+  location.insertAdjacentHTML('afterbegin', slides);
+};
 
-
-const displaySlideCard = (location, classNam, imageArr) => {  
+const displaySlideCard = (location, classNam, imageArr) => {
   imageArr.forEach((image) => {
-    slideCard(image, location, classNam );
-  });  
-}
+    slideCard(image, location, classNam);
+  });
+};
 
 const createPrevIcon = (location, classNam) => {
   location.insertAdjacentHTML('beforeend',
-  `<div class="circle ${classNam}">
+    `<div class="circle ${classNam}">
         <a class="prev">&#10094;</a>
    </div>
-   `)
-      
-}
+   `);
+};
 
-const createNextIcon = (location, classNam) => { 
+const createNextIcon = (location, classNam) => {
   location.insertAdjacentHTML('beforeend',
-     ` <div class="circle ${classNam}">
+    ` <div class="circle ${classNam}">
         <a class="next">&#10095;</a>
       </div>`);
-}
+};
 
 const createThumbnailEl = (image, id) => {
   const slides = document.createElement('div');
-  slides.classList.add('myThumbnails');    
+  slides.classList.add('myThumbnails');
   slides.innerHTML = `<img src="${image}" id="${id}" alt='product-thumbnail' >`;
   return slides;
-}
+};
 
-
-const insertThumbnailEl = (location, thumbnailsArr, id = 0) => { 
+const insertThumbnailEl = (location, thumbnailsArr, id = 0) => {
   thumbnailsArr.forEach((item, index) => {
-    location.appendChild(createThumbnailEl(item, index + 1 + id))
+    location.appendChild(createThumbnailEl(item, index + 1 + id));
   });
-}
-
+};
 
 const createPopupBg = () => {
   const popupModal = `
@@ -98,17 +91,16 @@ const createPopupBg = () => {
   
         </div>
     </div>`;
-    const slideshowContainer = document.querySelector('.slideshow-container');
-    slideshowContainer.insertAdjacentHTML('beforebegin', popupModal);
-}
+  const slideshowContainer = document.querySelector('.slideshow-container');
+  slideshowContainer.insertAdjacentHTML('beforebegin', popupModal);
+};
 
-
-
-export { insertCloseIcon,
-         insertCartCard, 
-         displaySlideCard, 
-         insertThumbnailEl, 
-         createPopupBg, 
-         createNextIcon, 
-         createPrevIcon 
-        }
+export {
+  insertCloseIcon,
+  insertCartCard,
+  displaySlideCard,
+  insertThumbnailEl,
+  createPopupBg,
+  createNextIcon,
+  createPrevIcon,
+};
