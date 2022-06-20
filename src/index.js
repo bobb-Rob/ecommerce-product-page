@@ -320,14 +320,19 @@ const slideshow = () => {
             createPopupBg();
             const popupSlideBg = document.querySelector('.slide-pop-bg');
           displaySlideCard(popupSlideBg, popupSlideClassName, imagesArr);
+
           createNextIcon(popupSlideBg, 'popup-circle-next');
           createPrevIcon(popupSlideBg, 'popup-circle-prev');
-          showSlider(slideIndex, popupSlideClassName);
 
+          showSlider(slideIndex, popupSlideClassName); //effect slideshow event
+
+            // Effect popup next and prev click event
           const popupPrev = document.querySelector('.popup-circle-prev');
         const popupNext = document.querySelector('.popup-circle-next');
           popupPrev.addEventListener('click', popupPreviousImage);   
             popupNext.addEventListener('click', popupNextImage);
+
+            // effect the event item for popup thumbnails
             const popThumbnail = document.querySelector('.pop-thumbnail');
             insertThumbnailEl(popThumbnail, thumbnailsArr, 10);
 
@@ -346,7 +351,7 @@ const slideshow = () => {
                     currentSlide(4, popupSlideClassName);
                   }       
                 });
-
+            // Insert close icon
             const closeEll = insertCloseIcon(popupSlideBg);
             closeEll.classList.add('pop-close');
             popupSlideBg.classList.add('checkout-cart-active');            

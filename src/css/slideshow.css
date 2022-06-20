@@ -75,7 +75,7 @@
 
  .thumbnail-container {  
   width: 80%;
-  height: 100px;  
+  height: 85px;  
   margin-bottom: 10rem;
   display: flex;
   gap: 10px;
@@ -138,7 +138,7 @@
 
  .pop-close {
   position: absolute;
-  top: 50px;
+  top: 40px;
   left: 63.5%;
   width: 20px;
   fill: var(--white);
