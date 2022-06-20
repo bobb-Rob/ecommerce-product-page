@@ -1,4 +1,14 @@
-import { insertCloseIcon, insertCartCard, product } from './components/dom.js';
+import { 
+    insertCloseIcon,
+    insertCartCard, 
+    displaySlideCard, 
+    insertThumbnailEl,
+    createPopupBg,
+    createNextIcon,
+    createPrevIcon
+} from './components/dom.js';
+// import { showSlider } from './components/slideshow.js';
+import { product, imagesArr, thumbnailsArr } from './components/product.js';
 import './css/index.css';
 import './css/slideshow.css';
 import './css/headline.css';
@@ -39,14 +49,12 @@ const displayCard = () => {
 }
 
 
-const updateCartCounts = (cart) => {
-    // const productQtyCount = document.querySelector('.productQtyCount');
+const updateCartCounts = (cart) => {   
     const cartCount = document.querySelector('.cart-count');
     let count = 0;
     cart.forEach((item) => {
         count = count + item.qty;
-    });
-    // productQtyCount.textContent = count;
+    });   
     cartCount.textContent = count;
 }
 
@@ -130,13 +138,6 @@ const productCountDecrement = () => {
         return;
     }
 } 
-
-// const resetUICount = () => {
-//     const productQtyCount = document.querySelector('.productQtyCount');
-//     const cartCount = document.querySelector('.cart-count');    
-//     productQtyCount.textContent = 0;
-//     cartCount.textContent = 0;   
-// }
 
 const alreadyInCart = (msg) => {
     const addToCartBtn = document.querySelector('.add-to-cart-btn');
@@ -238,6 +239,120 @@ const attachDeleteEvent = () => {
     } 
 }
 
-// SLide show event
+// Slide show event
 
+const slideshow = () => {
+    const slideshowContainer = document.querySelector('.slideshow-container');
+    const slideClassName = 'myslide';
 
+    displaySlideCard(slideshowContainer, slideClassName, imagesArr); // Display slide initial show
+    createNextIcon(slideshowContainer, 'circle-next');
+    createPrevIcon(slideshowContainer, 'circle-prev');
+    const showSlider = (n, classNam) => {   
+        let i;
+        let slides = document.getElementsByClassName(classNam);
+        console.log(slides)
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+    
+        if (n < 1) {
+            slideIndex = slides.length;      
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+    
+        slides[slideIndex-1].style.display = "block";
+        }
+
+    let slideIndex = 1;
+    showSlider(slideIndex, slideClassName);
+
+    const plusSlides = (n, classNam) => {     
+        showSlider(slideIndex += n, classNam);
+    }
+
+    function currentSlide(n, classNam) {
+        showSlider(slideIndex = n, classNam);
+    }
+        
+    const prev = document.querySelector('.circle-prev');
+    const next = document.querySelector('.circle-next');
+
+    const previousImage = () =>  plusSlides(-1, slideClassName);
+    prev.addEventListener('click', previousImage);
+
+    const nextImage = () =>  plusSlides(1, slideClassName);
+    next.addEventListener('click', nextImage);
+
+    // Thumbnails image event
+    const thumbnailContainer = document.querySelector('.thumbnail-container');
+    insertThumbnailEl(thumbnailContainer, thumbnailsArr);
+   
+    thumbnailContainer.addEventListener('click', (e) => {
+      console.log(e.target)
+        if(e.target.id === '1'){
+          currentSlide(1, slideClassName);
+        }
+        if(e.target.id === '2'){
+          currentSlide(2, slideClassName);
+        }
+        if(e.target.id === '3'){
+          currentSlide(3, slideClassName);
+        }
+        if(e.target.id === '4'){
+          currentSlide(4, slideClassName);
+        }       
+      });
+
+    //   Slide image click - pop up display event
+      const popupSlideClassName = 'inner-slide';
+
+      const popupPreviousImage = () =>  plusSlides(-1, popupSlideClassName);    
+  
+      const popupNextImage = () =>  plusSlides(1, popupSlideClassName);
+     
+     
+    slideshowContainer.addEventListener('click', (e) => {       
+          if(e.target.classList.contains('img-courosal') && screen.width > 375){
+            console.log('pop the modal');
+            createPopupBg();
+            const popupSlideBg = document.querySelector('.slide-pop-bg');
+          displaySlideCard(popupSlideBg, popupSlideClassName, imagesArr);
+          createNextIcon(popupSlideBg, 'popup-circle-next');
+          createPrevIcon(popupSlideBg, 'popup-circle-prev');
+          showSlider(slideIndex, popupSlideClassName);
+
+          const popupPrev = document.querySelector('.popup-circle-prev');
+        const popupNext = document.querySelector('.popup-circle-next');
+          popupPrev.addEventListener('click', popupPreviousImage);   
+            popupNext.addEventListener('click', popupNextImage);
+            const popThumbnail = document.querySelector('.pop-thumbnail');
+            insertThumbnailEl(popThumbnail, thumbnailsArr, 10);
+
+            popThumbnail.addEventListener('click', (e) => {
+                console.log(e.target)
+                  if(e.target.id === '11'){
+                    currentSlide(1, popupSlideClassName);
+                  }
+                  if(e.target.id === '12'){
+                    currentSlide(2, popupSlideClassName);
+                  }
+                  if(e.target.id === '13'){
+                    currentSlide(3, popupSlideClassName);
+                  }
+                  if(e.target.id === '14'){
+                    currentSlide(4, popupSlideClassName);
+                  }       
+                });
+
+            const closeEll = insertCloseIcon(popupSlideBg);
+            closeEll.classList.add('pop-close');
+            popupSlideBg.classList.add('checkout-cart-active');            
+          }
+        });  
+
+}
+
+slideshow();

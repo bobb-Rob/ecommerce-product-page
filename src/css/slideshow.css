@@ -10,8 +10,7 @@
 
 .circle {
   border-radius: 50%;
-  position: absolute;
-  top: 47%;
+  position: absolute;  
   background-color: var(--white);
   width: 30px;
   height: 30px;
@@ -30,10 +29,12 @@
 
 .circle-prev {
   left: 10px;
+  top: 47%;
 }
 
 .circle-next {
   right: 10px;
+  top: 47%;
 }
 
 .circle-prev:hover {
@@ -128,7 +129,7 @@
 }
 
 .pop-thumbnail {  
-  width: 30%; 
+  width: 25%; 
   height: 80px;
   margin-top: 10px;
   display: flex;
@@ -137,9 +138,26 @@
 
  .pop-close {
   position: absolute;
-  top: 5px;
+  top: 50px;
   left: 63.5%;
   width: 20px;
+  fill: var(--white);
+  /* filter: invert(100%) sepia(7%) saturate(0%) hue-rotate(169deg) brightness(100%) contrast(109%); */
+ }
+
+ .popup-circle-next,.popup-circle-prev {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  top: 15rem;
+ }
+
+ .popup-circle-next {
+  right: 28rem;
+ }
+
+ .popup-circle-prev {
+  left: 28rem;
  }
   
 }
