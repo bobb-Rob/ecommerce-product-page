@@ -71,9 +71,13 @@ const createNextIcon = (location, classNam) => {
 };
 
 const createThumbnailEl = (image, id) => {
-  const slides = document.createElement('div');
+  const slides = document.createElement('li');
   slides.classList.add('myThumbnails');
-  slides.innerHTML = `<img src="${image}" id="${id}" alt='product-thumbnail' >`;
+  slides.setAttribute('tabIndex', '0');
+  slides.id = `thumb-${id}`;
+  slides.innerHTML = `
+  <div class='faded-thumbnail-bg'></div>
+  <img src="${image}" id="${id}" alt='product-thumbnail' >`;
   return slides;
 };
 
@@ -87,9 +91,9 @@ const createPopupBg = () => {
   const popupModal = `
       <div class="slide-pop-bg">            
 
-        <div class="pop-thumbnail">
+        <ul class="pop-thumbnail">
   
-        </div>
+        </ul>
     </div>`;
   const slideshowContainer = document.querySelector('.slideshow-container');
   slideshowContainer.insertAdjacentHTML('beforebegin', popupModal);

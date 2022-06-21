@@ -276,23 +276,59 @@ const slideshow = () => {
   // Thumbnails image event
   const thumbnailContainer = document.querySelector('.thumbnail-container');
   insertThumbnailEl(thumbnailContainer, thumbnailsArr);
-
+  
   thumbnailContainer.addEventListener('click', (e) => {
-    if (e.target.id === '1') {
+    console.log(e.target)
+    if (e.target.id === 'thumb-1') {       
       currentSlide(1, slideClassName);
     }
-    if (e.target.id === '2') {
+    if (e.target.id === 'thumb-2') {       
       currentSlide(2, slideClassName);
     }
-    if (e.target.id === '3') {
+    if (e.target.id === 'thumb-3') {
       currentSlide(3, slideClassName);
     }
-    if (e.target.id === '4') {
+    if (e.target.id === 'thumb-4') {
       currentSlide(4, slideClassName);
     }
   });
 
-  //   Slide image click - pop up display event
+  const resetShadeBgColor = () => {
+    const children = thumbnailContainer.children;
+   for(let i = 0; i < children.length; i+=1){
+    children[i].firstElementChild.classList.remove('faded-thumbnail-bg-focus');
+   } 
+  }
+
+  const resetPopupShadeBgColor = () => { 
+    const children = document.querySelector('.pop-thumbnail').children;
+   for(let i = 0; i < children.length; i+=1){
+    children[i].firstElementChild.classList.remove('faded-thumbnail-bg-focus');
+   } 
+  }
+  
+
+  thumbnailContainer.addEventListener('focusin', (e) => {   
+    if (e.target.id === 'thumb-1') {
+        resetShadeBgColor();
+        e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+    }
+    if (e.target.id === 'thumb-2') {
+        resetShadeBgColor();
+        e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+    }
+    if (e.target.id === 'thumb-3') {
+        resetShadeBgColor();
+        e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+    }
+    if (e.target.id === 'thumb-4') {
+        resetShadeBgColor();
+        e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+    }
+  });
+  thumbnailContainer.firstElementChild.focus();
+
+  //   popup image click display event
   const popupSlideClassName = 'inner-slide';
 
   const popupPreviousImage = () => plusSlides(-1, popupSlideClassName);
@@ -320,24 +356,53 @@ const slideshow = () => {
       const popThumbnail = document.querySelector('.pop-thumbnail');
       insertThumbnailEl(popThumbnail, thumbnailsArr, 10);
 
-      popThumbnail.addEventListener('click', (e) => {
-        if (e.target.id === '11') {
+      popThumbnail.addEventListener('click', (e) => {       
+        if (e.target.id === 'thumb-11') {
           currentSlide(1, popupSlideClassName);
         }
-        if (e.target.id === '12') {
+        if (e.target.id === 'thumb-12') {
           currentSlide(2, popupSlideClassName);
         }
-        if (e.target.id === '13') {
+        if (e.target.id === 'thumb-13') {
           currentSlide(3, popupSlideClassName);
         }
-        if (e.target.id === '14') {
+        if (e.target.id === 'thumb-14') {
           currentSlide(4, popupSlideClassName);
         }
       });
+    
+
+      popThumbnail.addEventListener('focusin', (e) => {
+        
+        if (e.target.id === 'thumb-11') {
+            resetPopupShadeBgColor();
+            e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+        }
+        if (e.target.id === 'thumb-12') {
+            resetPopupShadeBgColor();
+            e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+        }
+        if (e.target.id === 'thumb-13') {
+            resetPopupShadeBgColor();
+            e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+        }
+        if (e.target.id === 'thumb-14') {
+            resetPopupShadeBgColor();
+            e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+        }
+      });
+     
+      popThumbnail.firstElementChild.focus();
       // Insert close icon
       const closeEll = insertCloseIcon(popupSlideBg);
       closeEll.classList.add('pop-close');
       popupSlideBg.classList.add('checkout-cart-active');
+
+      closeEll.addEventListener('click', () => {
+        popupSlideBg.classList.toggle('checkout-cart-active');
+        thumbnailContainer.firstElementChild.focus();
+        popupSlideBg.remove();
+      })
     }
   });
 };
