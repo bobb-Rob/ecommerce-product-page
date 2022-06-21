@@ -105,6 +105,10 @@
   font-size: 0.91rem;
 }
 
+.product-thumbnail + div {
+  margin-left: 10px;
+}
+
 .card-detail > div:first-child {
   display: flex;
   align-items: center;
@@ -119,10 +123,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.product-thumbnail + div {
-  margin-left: 10px;
 }
 
 .checkout-cart-active {
@@ -181,7 +181,6 @@
   .minus-icon {
     padding-bottom: 4px;
   }
-
 
   .cart-count {
     position: absolute;

@@ -54,17 +54,6 @@ const displayCard = () => {
   updateCartCounts(Cart.cart);
 };
 
-// const updateProductCount = (cart, product) => {
-//   const productQtyCount = document.querySelector('.productQtyCount');
-//   let count = 0;
-//   cart.forEach((item) => {
-//     if (item.id === product.id) {
-//       count = item.qty;
-//     }
-//   });
-//   productQtyCount.textContent = count;
-// };
-
 const resetCheckoutItems = () => {
   const innerCartBox = document.querySelector('.inner-cart-box');
   while (innerCartBox.firstElementChild) {
@@ -119,9 +108,8 @@ const addToCartBtn = document.querySelector('.add-to-cart-btn');
 
 const productCountIncrement = () => {
   const productQtyCount = document.querySelector('.productQtyCount');
-  // const cartCount = document.querySelector('.cart-count');
+
   productQtyCount.textContent = Number(productQtyCount.textContent) + 1;
-  // cartCount.textContent = Number(cartCount.textContent) + 1
 };
 
 const productCountDecrement = () => {
@@ -219,11 +207,8 @@ minusIconEl.addEventListener('click', () => {
   if (productQty < 2) {
     productQtyDecrement(Cart.cart, product);
     Cart.removeProduct(product);
-    // resetCheckoutItems();
   }
 });
-
-// remove product from the cart
 
 // Slide show event
 
@@ -276,13 +261,12 @@ const slideshow = () => {
   // Thumbnails image event
   const thumbnailContainer = document.querySelector('.thumbnail-container');
   insertThumbnailEl(thumbnailContainer, thumbnailsArr);
-  
+
   thumbnailContainer.addEventListener('click', (e) => {
-    console.log(e.target)
-    if (e.target.id === 'thumb-1') {       
+    if (e.target.id === 'thumb-1') {
       currentSlide(1, slideClassName);
     }
-    if (e.target.id === 'thumb-2') {       
+    if (e.target.id === 'thumb-2') {
       currentSlide(2, slideClassName);
     }
     if (e.target.id === 'thumb-3') {
@@ -294,36 +278,35 @@ const slideshow = () => {
   });
 
   const resetShadeBgColor = () => {
-    const children = thumbnailContainer.children;
-   for(let i = 0; i < children.length; i+=1){
-    children[i].firstElementChild.classList.remove('faded-thumbnail-bg-focus');
-   } 
-  }
+    const { children } = thumbnailContainer;
+    for (let i = 0; i < children.length; i += 1) {
+      children[i].firstElementChild.classList.remove('faded-thumbnail-bg-focus');
+    }
+  };
 
-  const resetPopupShadeBgColor = () => { 
-    const children = document.querySelector('.pop-thumbnail').children;
-   for(let i = 0; i < children.length; i+=1){
-    children[i].firstElementChild.classList.remove('faded-thumbnail-bg-focus');
-   } 
-  }
-  
+  const resetPopupShadeBgColor = () => {
+    const { children } = document.querySelector('.pop-thumbnail');
+    for (let i = 0; i < children.length; i += 1) {
+      children[i].firstElementChild.classList.remove('faded-thumbnail-bg-focus');
+    }
+  };
 
-  thumbnailContainer.addEventListener('focusin', (e) => {   
+  thumbnailContainer.addEventListener('focusin', (e) => {
     if (e.target.id === 'thumb-1') {
-        resetShadeBgColor();
-        e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+      resetShadeBgColor();
+      e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
     }
     if (e.target.id === 'thumb-2') {
-        resetShadeBgColor();
-        e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+      resetShadeBgColor();
+      e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
     }
     if (e.target.id === 'thumb-3') {
-        resetShadeBgColor();
-        e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+      resetShadeBgColor();
+      e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
     }
     if (e.target.id === 'thumb-4') {
-        resetShadeBgColor();
-        e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+      resetShadeBgColor();
+      e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
     }
   });
   thumbnailContainer.firstElementChild.focus();
@@ -356,7 +339,7 @@ const slideshow = () => {
       const popThumbnail = document.querySelector('.pop-thumbnail');
       insertThumbnailEl(popThumbnail, thumbnailsArr, 10);
 
-      popThumbnail.addEventListener('click', (e) => {       
+      popThumbnail.addEventListener('click', (e) => {
         if (e.target.id === 'thumb-11') {
           currentSlide(1, popupSlideClassName);
         }
@@ -370,28 +353,26 @@ const slideshow = () => {
           currentSlide(4, popupSlideClassName);
         }
       });
-    
 
       popThumbnail.addEventListener('focusin', (e) => {
-        
         if (e.target.id === 'thumb-11') {
-            resetPopupShadeBgColor();
-            e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+          resetPopupShadeBgColor();
+          e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
         }
         if (e.target.id === 'thumb-12') {
-            resetPopupShadeBgColor();
-            e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+          resetPopupShadeBgColor();
+          e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
         }
         if (e.target.id === 'thumb-13') {
-            resetPopupShadeBgColor();
-            e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+          resetPopupShadeBgColor();
+          e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
         }
         if (e.target.id === 'thumb-14') {
-            resetPopupShadeBgColor();
-            e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
+          resetPopupShadeBgColor();
+          e.target.firstElementChild.classList.add('faded-thumbnail-bg-focus');
         }
       });
-     
+
       popThumbnail.firstElementChild.focus();
       // Insert close icon
       const closeEll = insertCloseIcon(popupSlideBg);
@@ -402,7 +383,7 @@ const slideshow = () => {
         popupSlideBg.classList.toggle('checkout-cart-active');
         thumbnailContainer.firstElementChild.focus();
         popupSlideBg.remove();
-      })
+      });
     }
   });
 };
