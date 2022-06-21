@@ -1,65 +1,100 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* colors */
 :root {
-    --mobile: 375px;
-    --desktop: 1440px;
-    --orange: hsl(26, 100%, 55%);
-    --paleOrange: hsl(25, 100%, 94%);
-    --veryVarkBlue: hsl(220, 13%, 13%);
-    --darkGrayishBlue: hsl(219, 9%, 45%);
-    --grayishBlue: hsl(220, 14%, 75%);
-    --lightGrayishBlue: hsl(223, 64%, 98%);
-    --white: hsl(0, 0%, 100%);
-    --whiteFaded: hsla(0, 0%, 100%, 0.59);
-    --blackFaded: hsla(0, 0%, 0%, 0.253);
-    --black: hsl(0, 0%, 0%);
-    --kumbhSans: 'Kumbh Sans', sans-serif;
-    --fontSize: 1rem;
+  --mobile: 375px;
+  --desktop: 1440px;
+  --orange: hsl(26, 100%, 55%);
+  --paleOrange: hsl(25, 100%, 94%);
+  --veryVarkBlue: hsl(220, 13%, 13%);
+  --darkGrayishBlue: hsl(219, 9%, 45%);
+  --grayishBlue: hsl(220, 14%, 75%);
+  --lightGrayishBlue: hsl(223, 64%, 98%);
+  --white: hsl(0, 0%, 100%);
+  --whiteFaded: hsla(0, 0%, 100%, 0.59);
+  --blackFaded: hsla(0, 0%, 0%, 0.253);
+  --black: hsl(0, 0%, 0%);
+  --kumbhSans: 'Kumbh Sans', sans-serif;
+  --fontSize: 1rem;
 }
 
 body {
-    font-family: var(--kumbhSans);
+  font-family: var(--kumbhSans);
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-    height: 3rem;  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  height: 3.4rem;
 }
 
 .navbar div {
-    display: flex;
-    align-items: center;
-    justify-content: center;   
-    font-family: var(--kumbhSans);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--kumbhSans);
 }
 
 .navbar svg {
-    margin-right: 1rem;   
+  margin-right: 1rem;
 }
 
 .cart-div > img {
-    width: 20px;
+  width: 20px;
 }
 
 .img-courosal {
-    width: 100%;
+  width: 100%;
 }
 
 .attribution {
-    font-size: 11px;
-    text-align: center;
-    display: none;
+  font-size: 11px;
+  text-align: center;
+  display: none;
 }
 
 .attribution a {
-    color: hsl(228, 45%, 44%);
+  color: hsl(228, 45%, 44%);
 }
 
+@media screen and (min-width: 375px) {
+  body {
+    padding: 0 13%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
+    /* grid-template-rows: 9rem repeat(2, 1fr); */
+    column-gap: 1rem;
+    min-height: 100vh;
+  }
+
+  .navbar {
+    min-height: 6rem !important;
+    grid-column: span 2;
+    padding: 0;
+    border-bottom: 1px solid var(--grayishBlue);
+    margin-bottom: 5rem;
+  }
+
+  .headline {
+    margin-top: 1rem;
+  }
+
+  .headline > p {
+    margin-top: 1.5rem;
+  }
+
+  .cart-div > img {
+    width: 40px;
+  }
+
+  .logo {
+    width: 128px;
+  }
+}

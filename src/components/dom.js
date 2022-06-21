@@ -1,56 +1,20 @@
-import uniqid from 'uniqid';
 import '../css/sidebar.css';
 import closeIcon from '../images/icon-close.svg';
-import image1Thumnail from '../images/image-product-1-thumbnail.jpg'
-import productImage1 from '../images/image-product-1.jpg'
-import image2Thumnail from '../images/image-product-2-thumbnail.jpg'
-import productImage2 from '../images/image-product-2.jpg'
-import image3Thumnail from '../images/image-product-3-thumbnail.jpg'
-import productImage3 from '../images/image-product-3.jpg'
-import image4Thumnail from '../images/image-product-4-thumbnail.jpg'
-import productImage4 from '../images/image-product-4.jpg'
-import deleteIcon from '../images/icon-delete.svg'
-
-
+import deleteIcon from '../images/icon-delete.svg';
 
 const insertCloseIcon = (location) => {
-    const img = document.createElement('img');
-    img.src = closeIcon;   
-    location.appendChild(img);
-    return img;
-}
+  const img = document.createElement('img');
+  img.src = closeIcon;
+  location.appendChild(img);
+  return img;
+};
 
+const insertCartCard = ({
+  images, productName, qty, price, id,
+}) => {
+  const productThumnail = images.image1.imageThumnail;
 
-const product =  {
-    images: {
-      image1: {
-        image: productImage1,
-        imageThumnail: image1Thumnail
-      },
-      image2: {
-        image: productImage2,
-        imageThumnail: image2Thumnail
-      },
-      image3: {
-        image: productImage3,
-        imageThumnail: image3Thumnail
-      },
-      image4: {
-        image: productImage4,
-        imageThumnail: image4Thumnail
-      },
-
-    },   
-    productName: 'Autumn Limited Edition...',
-    qty: 0,
-    price: 125,
-    id: uniqid(),
-}
-
-const insertCartCard = ({images, productName, qty, price, id}) => {
-    const productThumnail = images.image1.imageThumnail;  
-    
-    const cartCard = `
+  const cartCard = `
     <div class="cart-card" id="${id}">
     <div class="card-detail">
      <div>
@@ -72,72 +36,75 @@ const insertCartCard = ({images, productName, qty, price, id}) => {
         <img class="product-delete" src="${deleteIcon}" alt="delete-icon">
       </div>
       </div>         
-  </div>`
+  </div>`;
 
   const innerCartBox = document.querySelector('.inner-cart-box');
-  innerCartBox.insertAdjacentHTML('beforeend', cartCard)
+  innerCartBox.insertAdjacentHTML('beforeend', cartCard);
 };
 
+const slideCard = (image, location, classNam) => {
+  const slides = `<div class="${classNam} fade">
+    <img class="img-courosal" src="${image}" alt="img-courosal">
+  </div>`;
+  location.insertAdjacentHTML('afterbegin', slides);
+};
 
-
-
-const executeSlideShow = () => {  
-  const slideCard = (image) => {
-    const slides = 
-    `<div class="myslide fade">
-      <img class="img-courosal" src="${image}" alt="img-courosal">
-    </div>`
-    const slideshowContainer = document.querySelector('.slideshow-container');
-    slideshowContainer.insertAdjacentHTML('afterbegin', slides)
-  }
-
-  const showSlider = (n) => {
-    let i;
-    let slides = document.getElementsByClassName("myslide");
-    if (n > slides.length) {
-      slideIndex = 1
-    }
-
-    if (n < 1) {
-      slideIndex = slides.length
-    
-    }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-
-    slides[slideIndex-1].style.display = "block";
-    }
-
-
-  const imagesArr = [productImage1, productImage2, productImage3, productImage4 ];
-  imagesArr.forEach((item) => {
-    slideCard(item)
+const displaySlideCard = (location, classNam, imageArr) => {
+  imageArr.forEach((image) => {
+    slideCard(image, location, classNam);
   });
+};
 
-  let slideIndex = 1;
-  showSlider(slideIndex);
+const createPrevIcon = (location, classNam) => {
+  location.insertAdjacentHTML('beforeend',
+    `<div class="circle ${classNam}">
+        <a class="prev">&#10094;</a>
+   </div>
+   `);
+};
 
-  const plusSlides = (n) => {
-    console.log('clicked')
-    showSlider(slideIndex += n);
-  }
+const createNextIcon = (location, classNam) => {
+  location.insertAdjacentHTML('beforeend',
+    ` <div class="circle ${classNam}">
+        <a class="next">&#10095;</a>
+      </div>`);
+};
+
+const createThumbnailEl = (image, id) => {
+  const slides = document.createElement('li');
+  slides.classList.add('myThumbnails');
+  slides.setAttribute('tabIndex', '0');
+  slides.id = `thumb-${id}`;
+  slides.innerHTML = `
+  <div class='faded-thumbnail-bg'></div>
+  <img src="${image}" id="${id}" alt='product-thumbnail' >`;
+  return slides;
+};
+
+const insertThumbnailEl = (location, thumbnailsArr, id = 0) => {
+  thumbnailsArr.forEach((item, index) => {
+    location.appendChild(createThumbnailEl(item, index + 1 + id));
+  });
+};
+
+const createPopupBg = () => {
+  const popupModal = `
+      <div class="slide-pop-bg">            
+
+        <ul class="pop-thumbnail">
   
- 
-    
-  const prev = document.querySelector('.circle-prev');
-  const next = document.querySelector('.circle-next');
+        </ul>
+    </div>`;
+  const slideshowContainer = document.querySelector('.slideshow-container');
+  slideshowContainer.insertAdjacentHTML('beforebegin', popupModal);
+};
 
-  prev.addEventListener('click', () => {
-    plusSlides(-1)
-  });
-
-  next.addEventListener('click', () => {
-    plusSlides(1)
-  });
-
-  }
-
-  executeSlideShow();
-
-export { insertCloseIcon, insertCartCard, product }
+export {
+  insertCloseIcon,
+  insertCartCard,
+  displaySlideCard,
+  insertThumbnailEl,
+  createPopupBg,
+  createNextIcon,
+  createPrevIcon,
+};

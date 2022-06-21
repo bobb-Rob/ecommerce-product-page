@@ -10,8 +10,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'E-commerce product page',     
-      template: './src/index.html'
+      title: 'E-commerce product page',
+      template: './src/index.html',
     }),
   ],
   output: {

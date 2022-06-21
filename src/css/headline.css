@@ -1,8 +1,9 @@
-.headline,.cart-section {
-  padding: 1rem 1.2rem 0;
+.headline,
+.cart-section {
+  padding: 2.5rem 1.2rem 0;
 }
 
-.headline > span {
+.headline > h1 {
   color: var(--orange);
   text-transform: uppercase;
   font-size: 0.75rem;
