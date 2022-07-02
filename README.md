@@ -34,8 +34,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/bobb-Rob/ecommerce-product-page/tree/main)
-- Live Site URL: [Add live site URL here](https://bobb-rob.github.io/ecommerce-product-page/)
+- Solution URL: [View Code](https://github.com/bobb-Rob/ecommerce-product-page/tree/develop)
+- Live Site URL: [live site](https://bobb-rob.github.io/ecommerce-product-page/)
 
 ## My process
 

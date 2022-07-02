@@ -45,7 +45,6 @@ const displayCard = () => {
   emptyEl.textContent = 'Your cart is empty.';
   if (Cart.cart.length === 0) {
     innerCartBox.appendChild(emptyEl);
-    // return emptyEl;
   }
   Cart.cart.forEach((item) => {
     insertCartCard(item);
